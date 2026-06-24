@@ -1,0 +1,8 @@
+{
+    "name": "anoma-gsap",
+    "scripts": {
+        "scss":   "npx sass assets/css/style.scss assets/css/style.min.css --style=compressed --no-source-map",
+        "serve":  "npx serve . -p 8064",
+        "deploy": "npx wrangler pages deploy . --project-name=anoma-gsap --branch=main"
+    }
+}

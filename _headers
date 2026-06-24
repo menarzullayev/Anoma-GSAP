@@ -1,0 +1,18 @@
+/assets/js/*
+  Cache-Control: no-cache
+
+/assets/css/*
+  Cache-Control: no-cache
+
+/assets/images/*
+  Cache-Control: public, max-age=2592000
+
+/assets/favicon.svg
+  Cache-Control: public, max-age=604800
+
+/assets/og-image.png
+  Cache-Control: public, max-age=604800
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY

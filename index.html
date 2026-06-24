@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Anoma — GSAP Scroll Experience · menarzullayev</title>
+    <meta name="description" content="A GSAP + ScrollTrigger parallax scroll experience. Fantasy world brought to life with smooth animations.">
+    <meta property="og:title"       content="Anoma — GSAP Scroll Experience">
+    <meta property="og:description" content="Parallax scroll journey with GSAP ScrollTrigger, Lenis smooth scroll, and layered PNG compositing.">
+    <meta property="og:image"       content="./assets/og-image.png">
+    <meta property="og:type"        content="website">
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.2.3/dist/lenis.css">
+    <link rel="stylesheet" href="./assets/css/style.min.css">
+
+    <!-- GSAP + Lenis via CDN (must load before main.js) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.2.3/dist/lenis.min.js"></script>
+    <script src="./assets/js/main.js" defer></script>
+</head>
+<body class="theme-space">
+
+    <!-- ── Fixed topbar ──────────────────────────────────────── -->
+    <nav id="topbar" class="topbar" aria-label="Controls">
+        <a class="tb__brand" href="#s1">
+            <span class="tb__name">menarzullayev</span>
+            <strong class="tb__title">ANOMA</strong>
+        </a>
+        <div class="tb__themes" id="themeBar" role="group" aria-label="Theme"></div>
+        <div class="tb__right">
+            <a class="tb__gh" href="https://github.com/menarzullayev/Anoma-GSAP" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        </div>
+    </nav>
+
+    <!-- ── Scroll progress bar ───────────────────────────────── -->
+    <div id="progressBar" class="progress-bar" aria-hidden="true"></div>
+
+    <!-- ══════════════════════════════════════════════════════════
+         S1 — HERO (CSS only, no PNG)
+    ══════════════════════════════════════════════════════════════ -->
+    <section id="s1" class="s s--hero">
+        <div class="hero-bg" id="heroBg" aria-hidden="true"></div>
+        <div class="hero-rings" aria-hidden="true">
+            <div class="hr hr--1"></div>
+            <div class="hr hr--2"></div>
+            <div class="hr hr--3"></div>
+        </div>
+        <div class="s__content hero-content">
+            <div class="hero-label">GSAP · ScrollTrigger · Lenis</div>
+            <h1 class="hero-title" aria-label="Anoma">
+                <span class="hw">A</span><span class="hw">N</span><span class="hw">O</span><span class="hw">M</span><span class="hw">A</span>
+            </h1>
+            <p class="hero-sub">A parallax scroll experience</p>
+            <div class="scroll-cue" aria-hidden="true">
+                <span class="sc__arrow">↓</span>
+                <span class="sc__text">Scroll to begin</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         S2 — START QUEST (pinned)
+    ══════════════════════════════════════════════════════════════ -->
+    <section id="s2" class="s s--quest">
+        <img id="s2-mountains" class="ql" src="./assets/images/start-quest-mountains.png"  alt="">
+        <img id="s2-cloud-l"   class="ql" src="./assets/images/start-quest-cloud-left.png"  alt="">
+        <img id="s2-cloud-r"   class="ql" src="./assets/images/start-quest-cloud-right.png" alt="">
+        <img id="s2-forest"    class="ql" src="./assets/images/start-quest-forest.png"      alt="">
+        <img id="s2-rock"      class="ql" src="./assets/images/start-quest-rock.png"        alt="">
+        <img id="s2-mage"      class="ql" src="./assets/images/start-quest-mage-start.png"  alt="">
+        <img id="s2-ll1"       class="ql" src="./assets/images/start-quest-left-leaf-1.png"  alt="">
+        <img id="s2-ll2"       class="ql" src="./assets/images/start-quest-left-leaf-2.png"  alt="">
+        <img id="s2-ll3"       class="ql" src="./assets/images/start-quest-left-leaf-3.png"  alt="">
+        <img id="s2-ll4"       class="ql" src="./assets/images/start-quest-left-leaf-4.png"  alt="">
+        <img id="s2-rl1"       class="ql" src="./assets/images/start-quest-right-leaf-1.png" alt="">
+        <img id="s2-rl2"       class="ql" src="./assets/images/start-quest-right-leaf-2.png" alt="">
+        <img id="s2-rl3"       class="ql" src="./assets/images/start-quest-right-leaf-3.png" alt="">
+        <img id="s2-rl4"       class="ql" src="./assets/images/start-quest-right-leaf-4.png" alt="">
+        <div id="s2-text" class="s__text">
+            <h2 class="s__heading">BEGIN YOUR QUEST</h2>
+            <p class="s__para">Step into the unknown world</p>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         S3 — DEEP FOREST (pinned)
+    ══════════════════════════════════════════════════════════════ -->
+    <section id="s3" class="s s--forest">
+        <img id="s3-cloud-l"   class="ql" src="./assets/images/quest-2-cloud.png"               alt="">
+        <img id="s3-cloud-r"   class="ql" src="./assets/images/quest-3-cloud-right.png"         alt="">
+        <img id="s3-cloud-l2"  class="ql" src="./assets/images/quest-3-cloud-left.png"          alt="">
+        <img id="s3-forest"    class="ql" src="./assets/images/quest-2-forest.png"              alt="">
+        <img id="s3-forest2"   class="ql" src="./assets/images/quest-3-forest.png"              alt="">
+        <img id="s3-tll0"      class="ql" src="./assets/images/quest-3-top-left-leaf-0.png"     alt="">
+        <img id="s3-tll1"      class="ql" src="./assets/images/quest-3-top-left-leaf-1.png"     alt="">
+        <img id="s3-tll2"      class="ql" src="./assets/images/quest-3-top-left-leaf-2.png"     alt="">
+        <img id="s3-tll3"      class="ql" src="./assets/images/quest-3-top-left-leaf-3.png"     alt="">
+        <img id="s3-tll4"      class="ql" src="./assets/images/quest-3-top-left-leaf-4.png"     alt="">
+        <img id="s3-trl1"      class="ql" src="./assets/images/quest-3-top-right-leaf-1.png"    alt="">
+        <img id="s3-trl2"      class="ql" src="./assets/images/quest-3-top-right-leaf-2.png"    alt="">
+        <img id="s3-trl3"      class="ql" src="./assets/images/quest-3-top-right-leaf-3.png"    alt="">
+        <img id="s3-bll1"      class="ql" src="./assets/images/quest-3-bottom-left-leaf-1.png"  alt="">
+        <img id="s3-bll2"      class="ql" src="./assets/images/quest-3-bottom-left-leaf-2.png"  alt="">
+        <img id="s3-bll3"      class="ql" src="./assets/images/quest-3-bottom-left-leaf-3.png"  alt="">
+        <img id="s3-brl1"      class="ql" src="./assets/images/quest-3-bottom-right-leaf-1.png" alt="">
+        <img id="s3-brl2"      class="ql" src="./assets/images/quest-3-bottom-right-leaf-2.png" alt="">
+        <img id="s3-brl3"      class="ql" src="./assets/images/quest-3-bottom-right-leaf-3.png" alt="">
+        <img id="s3-brl4"      class="ql" src="./assets/images/quest-3-bottom-right-leaf-4.png" alt="">
+        <img id="s3-brl5"      class="ql" src="./assets/images/quest-3-bottom-right-leaf-5.png" alt="">
+        <img id="s3-brl6"      class="ql" src="./assets/images/quest-3-bottom-right-leaf-6.png" alt="">
+        <img id="s3-brl7"      class="ql" src="./assets/images/quest-3-bottom-right-leaf-7.png" alt="">
+        <div id="s3-text" class="s__text">
+            <h2 class="s__heading">DEEP FOREST</h2>
+            <p class="s__para">Ancient trees remember everything</p>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         S4 — CRYSTAL CAVE (pinned)
+    ══════════════════════════════════════════════════════════════ -->
+    <section id="s4" class="s s--cave">
+        <img id="s4-outer"  class="ql" src="./assets/images/quest-4-outer-caves.png"   alt="">
+        <img id="s4-inner"  class="ql" src="./assets/images/quest-4-inner-caves.png"   alt="">
+        <img id="s4-cl"     class="ql" src="./assets/images/quest-4-crystal-left.png"  alt="">
+        <img id="s4-cr"     class="ql" src="./assets/images/quest-4-crystal-right.png" alt="">
+        <div id="s4-text" class="s__text">
+            <h2 class="s__heading">CRYSTAL CAVE</h2>
+            <p class="s__para">Where ancient power crystallizes</p>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         S5 — THE SUMMIT (pinned)
+    ══════════════════════════════════════════════════════════════ -->
+    <section id="s5" class="s s--summit">
+        <img id="s5-bg"       class="ql" src="./assets/images/quest-5-background.png"        alt="">
+        <img id="s5-cliffs"   class="ql" src="./assets/images/quest-5-background-cliffs.png" alt="">
+        <img id="s5-fg"       class="ql" src="./assets/images/quest-5-foreground.png"        alt="">
+        <img id="s5-lcr"      class="ql" src="./assets/images/quest-5-left-crystal.png"      alt="">
+        <img id="s5-rcr"      class="ql" src="./assets/images/quest-5-right-crystal.png"     alt="">
+        <img id="s5-tcr"      class="ql" src="./assets/images/quest-5-top-crystal.png"       alt="">
+        <img id="s5-tree"     class="ql" src="./assets/images/quest-5-tree.png"              alt="">
+        <div id="s5-text" class="s__text">
+            <h2 class="s__heading">THE SUMMIT</h2>
+            <p class="s__para">The peak of your journey awaits</p>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         S6 — COMPLETE (final, not pinned)
+    ══════════════════════════════════════════════════════════════ -->
+    <section id="s6" class="s s--complete">
+        <img id="s6-bg2"       class="ql" src="./assets/images/complete-bottom-bg-2.png"     alt="">
+        <img id="s6-bg1"       class="ql" src="./assets/images/complete-bottom-bg-1.png"     alt="">
+        <img id="s6-lcr"       class="ql" src="./assets/images/complete-left-crystal.png"    alt="">
+        <img id="s6-bcr"       class="ql" src="./assets/images/complete-bottom-crystal.png"  alt="">
+        <img id="s6-mage"      class="ql" src="./assets/images/complete-mage-start.png"      alt="">
+        <img id="s6-mage-glow" class="ql" src="./assets/images/complete-mage-start-glow.png" alt="">
+        <div class="s__content s6-cta">
+            <div class="cta-badge">QUEST COMPLETE</div>
+            <h2 class="cta-title">The World Awaits</h2>
+            <p class="cta-sub">Built with GSAP · ScrollTrigger · Lenis</p>
+            <a class="cta-btn" href="https://menarzullayev.com" target="_blank" rel="noopener noreferrer">
+                View Portfolio ↗
+            </a>
+        </div>
+    </section>
+
+</body>
+</html>
