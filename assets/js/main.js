@@ -1,7 +1,6 @@
 (function () {
     'use strict';
 
-    // ── Themes ────────────────────────────────────────────────────────────────
     const THEMES = [
         { id: 'theme-space',  label: 'Space'  },
         { id: 'theme-forest', label: 'Forest' },
@@ -32,7 +31,6 @@
         });
     }
 
-    // ── Star field (hero only) ────────────────────────────────────────────────
     function initStars() {
         const el = document.getElementById('heroBg');
         if (!el) return;
@@ -50,17 +48,14 @@
         el.style.boxShadow = shadows.join(',');
     }
 
-    // ── GSAP + Lenis ─────────────────────────────────────────────────────────
     function initGSAP() {
         gsap.registerPlugin(ScrollTrigger);
 
-        // Lenis smooth scroll
         const lenis = new Lenis();
         lenis.on('scroll', ScrollTrigger.update);
         gsap.ticker.add(t => lenis.raf(t * 1000));
         gsap.ticker.lagSmoothing(0);
 
-        // Progress bar
         gsap.to('#progressBar', {
             scaleX: 1,
             ease: 'none',
@@ -80,7 +75,6 @@
         initS6();
     }
 
-    // ── S1 — Hero ─────────────────────────────────────────────────────────────
     function initHero() {
         gsap.from('.hw', {
             y: 90, opacity: 0, duration: 1.1,
@@ -97,7 +91,6 @@
             opacity: 0, duration: 0.6, delay: 1.0, ease: 'power1.out',
         });
 
-        // On-scroll: hero title fades as user scrolls into S2
         gsap.to('.hero-content', {
             y: -80, opacity: 0,
             scrollTrigger: {
@@ -109,7 +102,6 @@
         });
     }
 
-    // ── S2 — Start Quest ──────────────────────────────────────────────────────
     function initS2() {
         const tl = gsap.timeline({
             scrollTrigger: {
@@ -134,7 +126,6 @@
             .from('#s2-mage',     { y: 80, opacity: 0 }, 0.1)
             .to('#s2-mage',       { y: -130 }, 0.5)
 
-            // Leaves rain down
             .from('#s2-ll1', { y: -500, rotation: -28 }, 0)
             .from('#s2-ll2', { y: -350, x: -80, rotation:  18 }, 0.08)
             .from('#s2-ll3', { y: -600, rotation: -10 }, 0.12)
@@ -148,7 +139,6 @@
             .from('#s2-text .s__para',    { y: 30, opacity: 0 }, 0.42);
     }
 
-    // ── S3 — Deep Forest ──────────────────────────────────────────────────────
     function initS3() {
         const tl = gsap.timeline({
             scrollTrigger: {
@@ -170,7 +160,6 @@
             .from('#s3-forest',  { scale: 1.2, transformOrigin: '50% 100%', opacity: 0 }, 0)
             .from('#s3-forest2', { scale: 1.15, transformOrigin: '50% 100%', y: 40 }, 0.1)
 
-            // Top leaves — rain from top
             .from('#s3-tll0', { y: -600, x: -60, rotation: -30 }, 0)
             .from('#s3-tll1', { y: -400, x: -30, rotation:  20 }, 0.06)
             .from('#s3-tll2', { y: -700, rotation: -12 }, 0.1)
@@ -180,7 +169,6 @@
             .from('#s3-trl2', { y: -400, x: 30,  rotation: -20 }, 0.06)
             .from('#s3-trl3', { y: -700, rotation:  12 }, 0.1)
 
-            // Bottom leaves — rise from bottom
             .from('#s3-bll1', { y: 300, x: -50, opacity: 0 }, 0.2)
             .from('#s3-bll2', { y: 200, x: -30, opacity: 0 }, 0.25)
             .from('#s3-bll3', { y: 250, x: -20, opacity: 0 }, 0.3)
@@ -196,7 +184,6 @@
             .from('#s3-text .s__para',    { y: 30, opacity: 0 }, 0.47);
     }
 
-    // ── S4 — Crystal Cave ─────────────────────────────────────────────────────
     function initS4() {
         const tl = gsap.timeline({
             scrollTrigger: {
@@ -221,7 +208,6 @@
             .from('#s4-text .s__para',    { y: 30, opacity: 0 }, 0.47);
     }
 
-    // ── S5 — Summit ───────────────────────────────────────────────────────────
     function initS5() {
         const tl = gsap.timeline({
             scrollTrigger: {
@@ -249,7 +235,6 @@
             .from('#s5-text .s__para',    { y: 30, opacity: 0 }, 0.47);
     }
 
-    // ── S6 — Complete ─────────────────────────────────────────────────────────
     function initS6() {
         const tl = gsap.timeline({
             scrollTrigger: {
@@ -274,7 +259,6 @@
             .from('.cta-btn',   { y: 20, opacity: 0, scale: 0.95 }, 0.6);
     }
 
-    // ── Init ──────────────────────────────────────────────────────────────────
     function init() {
         applyTheme(currentTheme);
         buildTopbar();
